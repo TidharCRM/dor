@@ -1,0 +1,827 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>דור אוסטריך · ליווי רגשי-אנרגטי</title>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  /* ---------- PREMIUM FONTUP FACES ---------- */
+  @font-face{font-family:"Mamilla";src:url("fonts/Mamilla-Light.woff2") format("woff2");font-weight:300;font-display:swap}
+  @font-face{font-family:"Mamilla";src:url("fonts/Mamilla-Regular.woff2") format("woff2");font-weight:400;font-display:swap}
+  @font-face{font-family:"Mamilla";src:url("fonts/Mamilla-Medium.woff2") format("woff2");font-weight:500;font-display:swap}
+  @font-face{font-family:"Mamilla";src:url("fonts/Mamilla-SemiBold.woff2") format("woff2");font-weight:600;font-display:swap}
+  @font-face{font-family:"Mamilla";src:url("fonts/Mamilla-Bold.woff2") format("woff2");font-weight:700;font-display:swap}
+  @font-face{font-family:"Alon";src:url("fonts/Alon-Light.woff2") format("woff2");font-weight:300;font-display:swap}
+  @font-face{font-family:"Alon";src:url("fonts/Alon-Regular.woff2") format("woff2");font-weight:400;font-display:swap}
+  @font-face{font-family:"Alon";src:url("fonts/Alon-Medium.woff2") format("woff2");font-weight:500;font-display:swap}
+  @font-face{font-family:"Alon";src:url("fonts/Alon-SemiBold.woff2") format("woff2");font-weight:600;font-display:swap}
+  @font-face{font-family:"Alon";src:url("fonts/Alon-Bold.woff2") format("woff2");font-weight:700;font-display:swap}
+  /* ---------- PALETTES ---------- */
+  :root[data-palette="cosmos"]{
+    --bg-0:#0b0716;--bg-1:#140b28;--bg-2:#1d1138;
+    --ink:#f3ecff;--ink-soft:#c9bce6;--ink-dim:#8a7db0;
+    --line:rgba(201,188,230,.14);
+    --accent:#c9a86a;--accent-soft:#e7d3a3;
+    --violet:#8b6ff0;--lilac:#c8b6ff;
+    --glow-a:rgba(139,111,240,.55);--glow-b:rgba(201,168,106,.25);
+  }
+  :root[data-palette="twilight"]{
+    --bg-0:#0a0e1f;--bg-1:#0f152e;--bg-2:#17203f;
+    --ink:#eef2ff;--ink-soft:#b9c2e4;--ink-dim:#7a83aa;
+    --line:rgba(185,194,228,.14);
+    --accent:#e8b0d6;--accent-soft:#f5cfe6;
+    --violet:#6f8dff;--lilac:#a8c2ff;
+    --glow-a:rgba(111,141,255,.5);--glow-b:rgba(232,176,214,.22);
+  }
+  :root[data-palette="dawn"]{
+    --bg-0:#140b18;--bg-1:#221028;--bg-2:#31173a;
+    --ink:#fff3ea;--ink-soft:#f1d8d0;--ink-dim:#b39797;
+    --line:rgba(241,216,208,.14);
+    --accent:#ffb37a;--accent-soft:#ffd0a8;
+    --violet:#c67fd4;--lilac:#e9b5f0;
+    --glow-a:rgba(198,127,212,.55);--glow-b:rgba(255,179,122,.22);
+  }
+  :root[data-palette="forest"]{
+    --bg-0:#071411;--bg-1:#0d1f1a;--bg-2:#122b23;
+    --ink:#effaf2;--ink-soft:#bcd6c6;--ink-dim:#7ea392;
+    --line:rgba(188,214,198,.14);
+    --accent:#d6b87a;--accent-soft:#ead2a0;
+    --violet:#69b38e;--lilac:#a5d4bc;
+    --glow-a:rgba(105,179,142,.45);--glow-b:rgba(214,184,122,.2);
+  }
+
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0}
+  body{
+    background:var(--bg-0);color:var(--ink);
+    font-family:"Alon","Helvetica Neue",sans-serif;font-weight:300;
+    line-height:1.65;font-size:17px;letter-spacing:.005em;
+    -webkit-font-smoothing:antialiased;overflow-x:hidden;
+  }
+  .serif{font-family:"Mamilla",serif;font-weight:500}
+  .mono{font-family:"JetBrains Mono",monospace;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-dim)}
+  a{color:inherit;text-decoration:none}
+  button{font-family:inherit;cursor:pointer;border:none;background:none;color:inherit}
+
+  /* ---------- BACKGROUND ---------- */
+  .sky{
+    position:fixed;inset:0;z-index:-2;overflow:hidden;pointer-events:none;
+    background:
+      radial-gradient(ellipse 60% 40% at 80% 10%, var(--glow-a), transparent 60%),
+      radial-gradient(ellipse 50% 35% at 10% 90%, var(--glow-b), transparent 65%),
+      radial-gradient(ellipse 70% 50% at 50% 50%, var(--bg-2), transparent 70%),
+      var(--bg-0);
+  }
+  .stars{position:fixed;inset:0;z-index:-1;pointer-events:none;opacity:.7}
+  .stars i{position:absolute;width:2px;height:2px;border-radius:50%;background:var(--ink);opacity:.7;animation:tw 4s ease-in-out infinite}
+  @keyframes tw{0%,100%{opacity:.25;transform:scale(.8)}50%{opacity:1;transform:scale(1.1)}}
+
+  /* ---------- NAV ---------- */
+  nav.top{
+    position:fixed;top:0;left:0;right:0;z-index:50;
+    padding:18px 48px;display:flex;align-items:center;justify-content:space-between;
+    backdrop-filter:blur(14px);
+    background:linear-gradient(to bottom, rgba(20,11,24,.65), rgba(20,11,24,0));
+  }
+  .logo{display:flex;align-items:center;gap:10px}
+  .logo-mark{
+    width:38px;height:38px;border-radius:50%;
+    background:linear-gradient(135deg, var(--accent), var(--accent-soft));
+    display:grid;place-items:center;position:relative;
+    box-shadow:0 0 24px var(--glow-a), 0 0 0 1px var(--line);
+    color:var(--bg-0);font-family:"Mamilla",serif;font-weight:600;font-size:15px;
+  }
+  .logo-text{font-family:"Mamilla",serif;font-size:19px;letter-spacing:.04em;line-height:1.1}
+  .logo-text .sub{font-size:11px;letter-spacing:.2em;color:var(--ink-dim);font-family:'JetBrains Mono',monospace;text-transform:uppercase}
+  nav.top ul{display:flex;gap:34px;list-style:none;margin:0;padding:0;font-size:14px;color:var(--ink-soft)}
+  nav.top ul a:hover{color:var(--ink)}
+  .nav-cta{padding:9px 18px;border:1px solid var(--line);border-radius:999px;font-size:13px;transition:.3s;background:rgba(255,255,255,.02)}
+  .nav-cta:hover{border-color:var(--accent);color:var(--accent)}
+
+  /* ---------- LAYOUT ---------- */
+  .wrap{max-width:1240px;margin:0 auto;padding:0 48px}
+  section{position:relative;padding:140px 0}
+  .eyebrow{display:inline-flex;align-items:center;gap:10px;margin-bottom:22px}
+  .eyebrow::before{content:"";width:28px;height:1px;background:var(--accent)}
+
+  /* ---------- HERO ---------- */
+  .hero{padding-top:190px;padding-bottom:120px;text-align:center;position:relative}
+  .hero-orb{
+    position:absolute;top:40px;left:50%;transform:translateX(-50%);
+    width:720px;height:720px;max-width:90vw;max-height:90vw;
+    border-radius:50%;
+    background:
+      radial-gradient(circle at 50% 45%, var(--glow-a) 0%, transparent 55%),
+      radial-gradient(circle at 50% 50%, transparent 40%, var(--glow-b) 55%, transparent 75%);
+    filter:blur(6px);z-index:-1;animation:pulse 9s ease-in-out infinite;
+  }
+  @keyframes pulse{0%,100%{transform:translateX(-50%) scale(1)}50%{transform:translateX(-50%) scale(1.05)}}
+  .hero h1{
+    font-family:"Mamilla",serif;font-weight:500;
+    font-size:clamp(40px,6vw,88px);line-height:1.1;letter-spacing:-.01em;
+    margin:0 auto;max-width:18ch;
+  }
+  .hero h1 em{font-style:normal;color:var(--accent);font-weight:500}
+  .hero p.lede{
+    max-width:60ch;margin:32px auto 0;
+    font-size:20px;color:var(--ink-soft);font-weight:300;text-wrap:pretty;
+  }
+  .hero p.lede strong{color:var(--ink);font-weight:500}
+  .hero-cta-row{
+    margin-top:48px;display:flex;gap:32px;justify-content:center;align-items:center;flex-wrap:wrap;
+  }
+  .btn{
+    display:inline-flex;align-items:center;gap:10px;
+    padding:16px 32px;border-radius:999px;
+    font-size:15px;font-weight:500;
+    transition:transform .3s, box-shadow .3s, background .3s;
+  }
+  .btn-primary{
+    background:var(--ink);color:var(--bg-0);
+    box-shadow:0 10px 40px -10px var(--glow-a), 0 0 0 1px rgba(255,255,255,.1);
+  }
+  .btn-primary:hover{transform:translateY(-2px);box-shadow:0 20px 50px -10px var(--glow-a)}
+  .btn-ghost{border:1px solid var(--line);color:var(--ink-soft);background:rgba(255,255,255,.02)}
+  .btn-ghost:hover{border-color:var(--accent);color:var(--ink)}
+  .btn .arrow{display:inline-block;transition:transform .3s}
+  .btn:hover .arrow{transform:translateX(-4px)}
+
+  .stat-pill{
+    display:flex;align-items:center;gap:14px;
+    padding:12px 22px;border-radius:999px;
+    border:1px solid var(--line);
+    background:rgba(255,255,255,.02);
+  }
+  .stat-pill .num{
+    font-family:"Mamilla",serif;font-weight:600;font-size:28px;color:var(--accent);line-height:1;
+  }
+  .stat-pill .label{
+    font-size:13px;color:var(--ink-soft);max-width:18ch;text-align:right;line-height:1.35;
+  }
+
+  .hero-meta{
+    margin-top:72px;display:flex;gap:48px;justify-content:center;flex-wrap:wrap;
+    color:var(--ink-dim);font-size:13px;
+  }
+  .hero-meta span{display:flex;align-items:center;gap:8px}
+  .hero-meta span::before{content:"";width:5px;height:5px;background:var(--accent);border-radius:50%}
+
+  /* ---------- PAIN (4 CARDS) ---------- */
+  .pain-head{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start;margin-bottom:60px}
+  .pain h2{
+    font-family:"Mamilla",serif;font-weight:500;
+    font-size:clamp(34px,4vw,56px);line-height:1.15;margin:0;letter-spacing:-.01em;
+  }
+  .pain h2 em{font-style:italic;color:var(--accent);font-family:"Mamilla",serif}
+  .pain p.intro{color:var(--ink-soft);font-size:17px;margin:0}
+  .pain-grid{
+    display:grid;grid-template-columns:repeat(2,1fr);gap:2px;
+    background:var(--line);border:1px solid var(--line);border-radius:24px;overflow:hidden;
+  }
+  .pain-card{
+    background:linear-gradient(180deg, rgba(255,255,255,.02), rgba(255,255,255,0));
+    padding:48px 40px;transition:.4s;position:relative;
+  }
+  .pain-card:hover{background:linear-gradient(180deg, rgba(198,127,212,.08), rgba(255,255,255,0))}
+  .pain-num{
+    font-family:"JetBrains Mono",monospace;font-size:11px;letter-spacing:.22em;color:var(--accent);
+    margin-bottom:18px;
+  }
+  .pain-card h3{font-family:"Mamilla",serif;font-size:24px;font-weight:500;margin:0 0 14px;letter-spacing:-.01em;line-height:1.3}
+  .pain-card p{font-size:15px;color:var(--ink-soft);margin:0;line-height:1.7}
+
+  /* ---------- METHOD (3 COLUMNS) ---------- */
+  .method-head{text-align:center;margin-bottom:60px}
+  .method-head h2{
+    font-family:"Mamilla",serif;font-weight:500;
+    font-size:clamp(34px,4vw,56px);line-height:1.15;margin:0 auto;max-width:22ch;letter-spacing:-.01em;
+  }
+  .method-head h2 em{font-style:italic;color:var(--accent)}
+  .method-head p{color:var(--ink-soft);max-width:60ch;margin:24px auto 0;font-size:17px}
+  .method-cols{
+    display:grid;grid-template-columns:repeat(3,1fr);gap:1px;
+    background:var(--line);border:1px solid var(--line);border-radius:24px;overflow:hidden;
+  }
+  .method-col{
+    background:var(--bg-1);padding:48px 36px;display:flex;flex-direction:column;min-height:280px;
+    transition:.4s;
+  }
+  .method-col:hover{background:linear-gradient(180deg, rgba(198,127,212,.08), var(--bg-1))}
+  .method-num{
+    font-family:"JetBrains Mono",monospace;font-size:11px;letter-spacing:.22em;color:var(--accent);margin-bottom:24px;
+  }
+  .method-col h3{font-family:"Mamilla",serif;font-size:22px;font-weight:500;margin:0 0 14px;line-height:1.3;letter-spacing:-.01em}
+  .method-col p{font-size:15px;color:var(--ink-soft);margin:0;line-height:1.7}
+
+  /* ---------- BIG QUOTE ---------- */
+  .quote{padding:120px 0;text-align:center}
+  .quote blockquote{
+    font-family:"Mamilla",serif;font-style:italic;font-weight:500;
+    font-size:clamp(28px,3.6vw,52px);line-height:1.3;letter-spacing:-.01em;
+    margin:0 auto;max-width:24ch;color:var(--ink);position:relative;
+  }
+  .quote blockquote::before{
+    content:"„";position:absolute;top:-40px;right:-30px;
+    font-size:120px;color:var(--accent);opacity:.35;font-family:"Mamilla",serif;line-height:1;
+  }
+  .quote cite{
+    display:block;margin-top:36px;font-style:normal;
+    font-family:"JetBrains Mono",monospace;font-size:12px;letter-spacing:.22em;text-transform:uppercase;
+    color:var(--accent);
+  }
+
+  /* ---------- BIG STAT (95%) ---------- */
+  .big-stat-grid{display:grid;grid-template-columns:5fr 7fr;gap:80px;align-items:center}
+  .big-stat-num{
+    font-family:"Mamilla",serif;font-weight:600;
+    font-size:clamp(140px,18vw,260px);line-height:.9;letter-spacing:-.04em;
+    color:var(--accent);
+    text-shadow:0 0 60px var(--glow-a);
+    display:flex;align-items:flex-start;
+  }
+  .big-stat-num sup{font-size:.4em;font-weight:500;margin-top:.15em}
+  .big-stat-text h2{
+    font-family:"Mamilla",serif;font-weight:500;
+    font-size:clamp(28px,3.4vw,44px);line-height:1.2;margin:0 0 22px;letter-spacing:-.01em;
+  }
+  .big-stat-text h2 em{font-style:italic;color:var(--accent)}
+  .big-stat-text p{color:var(--ink-soft);font-size:17px;margin:0;max-width:52ch;line-height:1.75}
+
+  /* ---------- AUDIENCE (זה בשבילך אם...) ---------- */
+  .audience-head{text-align:center;margin-bottom:60px}
+  .audience-head h2{
+    font-family:"Mamilla",serif;font-weight:500;
+    font-size:clamp(34px,4vw,56px);line-height:1.15;margin:0 auto;max-width:20ch;letter-spacing:-.01em;
+  }
+  .audience-head h2 em{font-style:italic;color:var(--accent)}
+  .audience-head p{color:var(--ink-soft);max-width:52ch;margin:22px auto 0;font-size:17px}
+  .audience-list{max-width:820px;margin:0 auto;display:grid;gap:14px}
+  .audience-row{
+    display:flex;align-items:flex-start;gap:18px;
+    padding:22px 26px;border:1px solid var(--line);border-radius:16px;
+    background:linear-gradient(180deg, rgba(255,255,255,.02), rgba(255,255,255,0));
+    font-size:16px;color:var(--ink-soft);line-height:1.6;transition:.3s;
+  }
+  .audience-row:hover{border-color:var(--accent);color:var(--ink);transform:translateX(-3px)}
+  .audience-row .mark{
+    width:28px;height:28px;border-radius:50%;
+    background:var(--accent);color:var(--bg-0);
+    display:grid;place-items:center;flex-shrink:0;font-size:13px;font-weight:600;
+  }
+
+  /* ---------- FLOW (4 STEPS) ---------- */
+  .flow-head{text-align:center;margin-bottom:80px}
+  .flow-head h2{
+    font-family:"Mamilla",serif;font-weight:500;
+    font-size:clamp(34px,4vw,56px);line-height:1.15;margin:0 auto;max-width:22ch;letter-spacing:-.01em;
+  }
+  .flow-head h2 em{font-style:italic;color:var(--accent)}
+  .flow-head p{color:var(--ink-soft);max-width:52ch;margin:22px auto 0;font-size:17px}
+  .flow-steps{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:24px;overflow:hidden}
+  .step{background:var(--bg-1);padding:40px 26px;position:relative;min-height:280px;display:flex;flex-direction:column}
+  .step .step-num{font-family:"JetBrains Mono",monospace;font-size:11px;letter-spacing:.2em;color:var(--accent);margin-bottom:24px}
+  .step h3{font-family:"Mamilla",serif;font-size:21px;font-weight:500;margin:0 0 12px;line-height:1.3;letter-spacing:-.01em}
+  .step p{font-size:14px;color:var(--ink-soft);margin:0;line-height:1.7}
+  .step-glyph{
+    width:42px;height:42px;margin-bottom:24px;border-radius:50%;
+    border:1px solid var(--line);display:grid;place-items:center;
+    background:radial-gradient(circle at 30% 30%, var(--glow-a), transparent 70%);
+  }
+  .step-glyph::after{content:"";width:8px;height:8px;border-radius:50%;background:var(--accent);box-shadow:0 0 12px var(--accent)}
+
+  /* ---------- ABOUT ---------- */
+  .about-grid{display:grid;grid-template-columns:5fr 7fr;gap:80px;align-items:center}
+  .about-photo{
+    aspect-ratio:4/5;border-radius:24px;position:relative;overflow:hidden;
+    border:1px solid var(--line);
+    box-shadow:0 30px 80px -30px rgba(0,0,0,.6);
+    background:
+      linear-gradient(180deg, transparent 55%, rgba(20,11,24,.55) 100%),
+      radial-gradient(ellipse at top right, rgba(198,127,212,.18), transparent 60%),
+      linear-gradient(135deg, var(--bg-1), var(--bg-2));
+    display:grid;place-items:center;
+  }
+  .about-photo .halo{
+    position:absolute;inset:-30%;border-radius:50%;
+    background:radial-gradient(circle, var(--glow-a) 0%, transparent 55%);
+    filter:blur(20px);z-index:-1;
+  }
+  .about-photo .ph{
+    font-family:"Mamilla",serif;font-size:15px;color:var(--ink-dim);text-align:center;padding:24px;
+  }
+  .about-photo .caption{
+    position:absolute;bottom:20px;right:20px;left:20px;z-index:2;
+    font-family:"JetBrains Mono",monospace;font-size:10px;
+    letter-spacing:.22em;text-transform:uppercase;color:var(--ink-soft);
+    display:flex;justify-content:space-between;align-items:center;
+  }
+  .about-photo .caption::before{content:"";flex:1;height:1px;background:var(--line);margin-left:12px}
+  .about h2{
+    font-family:"Mamilla",serif;font-weight:500;
+    font-size:clamp(34px,4.2vw,60px);line-height:1.05;margin:0 0 28px;letter-spacing:-.01em;
+  }
+  .about h2 em{font-style:italic;color:var(--accent)}
+  .about p{color:var(--ink-soft);font-size:17px;margin:0 0 18px;max-width:52ch;line-height:1.75}
+  .about-stats{
+    margin-top:36px;display:grid;grid-template-columns:repeat(3,1fr);gap:14px;
+  }
+  .about-stat{
+    padding:20px;border:1px solid var(--line);border-radius:16px;
+    background:rgba(255,255,255,.02);
+  }
+  .about-stat .n{
+    font-family:"Mamilla",serif;font-weight:600;font-size:32px;color:var(--accent);line-height:1;margin-bottom:8px;
+  }
+  .about-stat .l{font-size:13px;color:var(--ink-soft);line-height:1.4}
+
+  /* ---------- FAQ ---------- */
+  .faq-grid{display:grid;grid-template-columns:1fr 2fr;gap:80px;align-items:start}
+  .faq-grid > div:first-child{position:sticky;top:120px}
+  .faq-grid > div:first-child h2{
+    font-family:"Mamilla",serif;font-weight:500;
+    font-size:clamp(30px,3.5vw,46px);line-height:1.15;margin:0;letter-spacing:-.01em;
+  }
+  .faq-grid > div:first-child h2 em{font-style:italic;color:var(--accent)}
+  .faq-list{border-top:1px solid var(--line)}
+  .faq-item{border-bottom:1px solid var(--line);padding:28px 0;cursor:pointer}
+  .faq-item summary{list-style:none;display:flex;justify-content:space-between;align-items:center;gap:24px}
+  .faq-item summary::-webkit-details-marker{display:none}
+  .faq-item summary h3{font-family:"Mamilla",serif;font-size:20px;font-weight:500;margin:0;flex:1;line-height:1.4;letter-spacing:-.005em}
+  .faq-toggle{
+    width:32px;height:32px;border-radius:50%;border:1px solid var(--line);
+    display:grid;place-items:center;flex-shrink:0;font-size:18px;color:var(--ink-soft);transition:.3s;
+  }
+  .faq-item[open] .faq-toggle{transform:rotate(45deg);background:var(--accent);color:var(--bg-0);border-color:var(--accent)}
+  .faq-answer{padding-top:18px;color:var(--ink-soft);font-size:15px;max-width:62ch;line-height:1.75}
+
+  /* ---------- FINAL CTA ---------- */
+  .final-cta{position:relative;text-align:center}
+  .final-box{
+    position:relative;
+    border:1px solid var(--line);border-radius:32px;
+    padding:80px 64px;overflow:hidden;
+    background:linear-gradient(135deg, rgba(198,127,212,.10), rgba(255,179,122,.06));
+  }
+  .final-box::before{
+    content:"";position:absolute;inset:-50%;
+    background:conic-gradient(from 0deg, transparent, var(--glow-a), transparent, var(--glow-b), transparent);
+    opacity:.35;animation:spin 30s linear infinite;z-index:-1;
+  }
+  @keyframes spin{to{transform:rotate(360deg)}}
+  .final-box h2{
+    font-family:"Mamilla",serif;font-weight:500;
+    font-size:clamp(34px,4.5vw,64px);line-height:1.1;margin:0 auto 28px;max-width:18ch;letter-spacing:-.01em;
+  }
+  .final-box h2 em{font-style:italic;color:var(--accent)}
+  .final-box p{color:var(--ink-soft);font-size:17px;max-width:52ch;margin:0 auto 40px;line-height:1.75}
+  .final-trust{
+    margin-top:24px;display:flex;gap:32px;justify-content:center;flex-wrap:wrap;
+    color:var(--ink-dim);font-size:13px;
+  }
+  .final-trust span{display:flex;align-items:center;gap:8px}
+  .final-trust span::before{content:"✓";color:var(--accent);font-weight:600}
+
+  /* ---------- FOOTER ---------- */
+  footer{
+    padding:60px 48px 40px;border-top:1px solid var(--line);
+    display:flex;justify-content:space-between;align-items:center;
+    color:var(--ink-dim);font-size:13px;flex-wrap:wrap;gap:20px;
+  }
+  footer .socials{display:flex;gap:20px;align-items:center}
+  footer a:hover{color:var(--ink)}
+  footer .phone-link{color:var(--accent);direction:ltr}
+
+  /* ---------- TWEAKS PANEL ---------- */
+  .tweaks{
+    position:fixed;bottom:24px;left:24px;z-index:100;
+    background:rgba(20,11,24,.9);backdrop-filter:blur(20px);
+    border:1px solid var(--line);border-radius:18px;
+    padding:18px;min-width:240px;display:none;
+    box-shadow:0 30px 60px -20px rgba(0,0,0,.6);
+  }
+  .tweaks.show{display:block}
+  .tweaks h5{font-family:"JetBrains Mono",monospace;font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--ink-dim);margin:0 0 14px}
+  .palette-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:8px}
+  .palette-btn{
+    padding:12px;border-radius:12px;border:1px solid var(--line);
+    display:flex;flex-direction:column;align-items:flex-start;gap:8px;transition:.3s;text-align:right;
+  }
+  .palette-btn.active{border-color:var(--accent)}
+  .palette-btn:hover{background:rgba(255,255,255,.04)}
+  .palette-swatches{display:flex;gap:4px}
+  .palette-swatches i{width:16px;height:16px;border-radius:50%;display:block}
+  .palette-btn span{font-size:12px;color:var(--ink-soft)}
+
+  /* ---------- RESPONSIVE ---------- */
+  @media (max-width:1024px){
+    .flow-steps{grid-template-columns:repeat(2,1fr)}
+    .method-cols{grid-template-columns:1fr}
+    .big-stat-grid{grid-template-columns:1fr;text-align:center;gap:40px}
+    .big-stat-num{justify-content:center}
+    .big-stat-text p{margin-inline:auto}
+  }
+  @media (max-width:900px){
+    .wrap{padding:0 24px}
+    section{padding:80px 0}
+    nav.top{padding:14px 24px}
+    nav.top ul{display:none}
+    .pain-head,.about-grid,.faq-grid{grid-template-columns:1fr;gap:40px}
+    .pain-grid{grid-template-columns:1fr}
+    .flow-steps{grid-template-columns:1fr}
+    .final-box{padding:48px 28px}
+    footer{padding:40px 24px}
+    .quote blockquote::before{right:0;top:-30px;font-size:80px}
+    .about-stats{grid-template-columns:1fr}
+  }
+  @media (max-width:560px){
+    .pain-card,.method-col{padding:36px 26px}
+    .stat-pill{padding:10px 16px}
+    .stat-pill .num{font-size:22px}
+  }
+</style>
+</head>
+<body>
+
+<div class="sky"></div>
+<div class="stars" id="stars"></div>
+
+<!-- ========== NAV ========== -->
+<nav class="top">
+  <div class="logo">
+    <div class="logo-mark">דא</div>
+    <div class="logo-text">דור אוסטריך<br><span class="sub">ליווי רגשי-אנרגטי</span></div>
+  </div>
+  <ul>
+    <li><a href="#pain">אם הגעת לכאן</a></li>
+    <li><a href="#method">השיטה</a></li>
+    <li><a href="#flow">תהליך</a></li>
+    <li><a href="#about">עליי</a></li>
+    <li><a href="#faq">שאלות</a></li>
+  </ul>
+  <a href="#contact" class="nav-cta">קבעו פגישת היכרות ←</a>
+</nav>
+
+<!-- ========== HERO ========== -->
+<section class="hero">
+  <div class="hero-orb"></div>
+  <div class="wrap">
+    <div class="eyebrow mono">דור אוסטריך · ליווי רגשי-אנרגטי</div>
+    <h1>
+      ניסית הכל.<br>
+      תרופות, פסיכולוגים,<br>
+      ועדיין <em>שום דבר לא זז</em>.
+    </h1>
+    <p class="lede">
+      יש דרך אחרת. בלי כדורים. בלי שנים על הספה.
+      שיטה שמדברת ישר אל המקום שבו הכאב באמת יושב — ומשחררת אותו משם.
+      <strong>95% מהמטופלים מדווחים על הקלה כבר מהפגישה הראשונה.</strong>
+    </p>
+    <div class="hero-cta-row">
+      <a href="#contact" class="btn btn-primary">
+        <span>קבעו פגישת היכרות</span>
+        <span class="arrow">←</span>
+      </a>
+      <div class="stat-pill">
+        <div class="num">95%</div>
+        <div class="label">מדווחים על הקלה מהטיפול הראשון</div>
+      </div>
+    </div>
+    <div class="hero-meta">
+      <span>אנשים · זוגות · ילדים</span>
+      <span>פגישת היכרות חינם</span>
+      <span>ללא תרופות · ללא תופעות לוואי</span>
+    </div>
+  </div>
+</section>
+
+<!-- ========== PAIN (אם הגעת לכאן) ========== -->
+<section class="pain" id="pain">
+  <div class="wrap">
+    <div class="pain-head">
+      <div>
+        <div class="eyebrow mono">אם הגעת לכאן</div>
+        <h2>כנראה שגם אתה מכיר<br>את <em>התחושה הזאת</em>.</h2>
+      </div>
+      <div>
+        <p class="intro">שבה הכאב הפנימי לא מרפה — לא משנה כמה ניסית. לא משנה לכמה מטפלים הלכת, כמה ספרים קראת, או כמה כדורים לקחת.</p>
+      </div>
+    </div>
+
+    <div class="pain-grid">
+      <div class="pain-card">
+        <div class="pain-num">01</div>
+        <h3>הסטיגמה של התרופות</h3>
+        <p>אמרו לך שזו הדרך היחידה. תרופות לחרדה, נוגדי דיכאון, כדורי שינה. אתה לא רוצה לחיות ככה — ובצדק.</p>
+      </div>
+      <div class="pain-card">
+        <div class="pain-num">02</div>
+        <h3>שנים על הספה, בלי תוצאה</h3>
+        <p>פסיכולוגים, מטפלים, שיחות אינסופיות. דיברתם על העבר עד אין סוף, אבל ההווה עדיין כואב באותו מקום.</p>
+      </div>
+      <div class="pain-card">
+        <div class="pain-num">03</div>
+        <h3>רגש שאין לו מילים</h3>
+        <p>משהו תקוע בפנים שאתה לא יודע איך להגדיר. לחץ בחזה, חוסר שקט, קול ביקורתי שלא נותן רגע מנוחה.</p>
+      </div>
+      <div class="pain-card">
+        <div class="pain-num">04</div>
+        <h3>טראומות שלא משחררות</h3>
+        <p>אירועים מהעבר שעדיין שולטים בהווה. מערכות יחסים, פחדים, דפוסים שחוזרים על עצמם שוב ושוב.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== METHOD ========== -->
+<section class="method" id="method">
+  <div class="wrap">
+    <div class="method-head">
+      <div class="eyebrow mono" style="justify-content:center">איך זה עובד</div>
+      <h2>יש שפה שהגוף מבין<br><em>לפני</em> שהמילים מגיעות.</h2>
+      <p>הטיפול הרגשי-אנרגטי לא מנסה לנתח את הכאב — הוא ניגש ישר אל המקום שבו הוא יושב בגוף, ומשחרר אותו משם. זאת הסיבה שזה עובד מהר. זאת הסיבה שאנשים מרגישים שינוי כבר באותה הפגישה.</p>
+    </div>
+
+    <div class="method-cols">
+      <div class="method-col">
+        <div class="method-num">01 / גישה</div>
+        <h3>בלי תרופות, בלי תופעות לוואי</h3>
+        <p>הגוף יודע לרפא את עצמו כשנותנים לו את הכלים הנכונים. אנחנו עובדים עם המערכת הטבעית שלך — לא נגדה.</p>
+      </div>
+      <div class="method-col">
+        <div class="method-num">02 / שיטה</div>
+        <h3>תרגום רגשות למילים</h3>
+        <p>מה שאתה לא יכול להגדיר, אתה לא יכול לרפא. אני עוזר לך לפרק את הרגש לחלקים שאפשר באמת לעבוד איתם — ואז להרכיב אותך מחדש.</p>
+      </div>
+      <div class="method-col">
+        <div class="method-num">03 / תוצאה</div>
+        <h3>פחות ביקורת, יותר שקט</h3>
+        <p>כשהקול הפנימי הביקורתי נחלש, נוצר מקום לבהירות, לקבלה עצמית, ולתחושת שייכות לחיים של עצמך.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== QUOTE ========== -->
+<section class="quote">
+  <div class="wrap">
+    <blockquote>
+      כשיש פחות ביקורת פנימית — יש יותר שקט. יותר בהירות. ויותר מקום להיות אתה.
+      <cite>— דור אוסטריך</cite>
+    </blockquote>
+  </div>
+</section>
+
+<!-- ========== BIG STAT ========== -->
+<section class="big-stat">
+  <div class="wrap">
+    <div class="big-stat-grid">
+      <div class="big-stat-num">95<sup>%</sup></div>
+      <div class="big-stat-text">
+        <div class="eyebrow mono">המספרים מדברים</div>
+        <h2>תשעה מתוך עשרה אנשים<br>מרגישים את <em>השינוי</em><br>כבר בפגישה הראשונה.</h2>
+        <p>זה לא קסם, וזה לא הבטחת שווא. זאת תוצאה של שיטה שמדלגת על השלב של "בואו נדבר על זה" — וניגשת ישר למקום שבו הרגש באמת חי. רוב האנשים שמגיעים אליי כבר ניסו דרכים אחרות. הם לא באים בשביל עוד ניסיון — הם באים בשביל תוצאה.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== AUDIENCE ========== -->
+<section class="audience">
+  <div class="wrap">
+    <div class="audience-head">
+      <div class="eyebrow mono" style="justify-content:center">למי זה מתאים</div>
+      <h2>זה <em>בשבילך</em> אם...</h2>
+      <p>ליווי רגשי-אנרגטי הוא לא לכולם. הוא לאלה שכבר עברו את השלב של "אולי זה יעבור מעצמו".</p>
+    </div>
+    <div class="audience-list">
+      <div class="audience-row"><div class="mark">✓</div><div>ניסית פסיכולוגים, פסיכיאטרים, או טיפולים מערביים — והרגשת שמשהו פשוט לא מתחבר.</div></div>
+      <div class="audience-row"><div class="mark">✓</div><div>את לא רוצה לקחת תרופות — לא בגלל שאת נגד, אלא כי את יודעת שהבעיה לא נמצאת שם.</div></div>
+      <div class="audience-row"><div class="mark">✓</div><div>יש לך טראומה — מקטנות, ממערכת יחסים, מהצבא, מאירוע — שעדיין משפיעה עליך היום.</div></div>
+      <div class="audience-row"><div class="mark">✓</div><div>את במערכת זוגית שמרגישה תקועה — וניסיתם הכל מלבד לבדוק מה באמת קורה ברובד הרגשי.</div></div>
+      <div class="audience-row"><div class="mark">✓</div><div>יש לך ילד או נער שסובל — מחרדות, מהתפרצויות, או מקושי לבטא רגשות — ואת מחפשת מישהו שידע לדבר איתו אחרת.</div></div>
+      <div class="audience-row"><div class="mark">✓</div><div>את מרגישה שיש משהו פנימי שתקוע — אבל אין לך מילים להגדיר אותו.</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== FLOW ========== -->
+<section class="flow" id="flow">
+  <div class="wrap">
+    <div class="flow-head">
+      <div class="eyebrow mono" style="justify-content:center">איך נראה תהליך הליווי</div>
+      <h2>ארבעה שלבים <em>פשוטים</em> —<br>בלי הפתעות, בלי לחץ.</h2>
+      <p>תהליך מותאם אישית, לא תבנית קבועה. אנחנו מתקדמים בקצב שלך — לא בקצב של מערכת.</p>
+    </div>
+    <div class="flow-steps">
+      <div class="step">
+        <div class="step-glyph"></div>
+        <div class="step-num">שלב 01</div>
+        <h3>שיחת היכרות</h3>
+        <p>שיחה קצרה (כ-20 דקות) שבה אנחנו מבינים מה אתה מביא, מה ניסית עד היום, ומה הציפיות שלך. אם אני לא חושב שאני האדם הנכון בשבילך — אגיד לך את זה ישר.</p>
+      </div>
+      <div class="step">
+        <div class="step-glyph"></div>
+        <div class="step-num">שלב 02</div>
+        <h3>הפגישה הראשונה</h3>
+        <p>פגישה אחת, פנים אל פנים או באונליין. כאן אנחנו מתחילים לפרק את הרגש לחלקים, ולשחרר את מה שתקוע. רוב האנשים מרגישים שינוי משמעותי כבר בפגישה הזאת.</p>
+      </div>
+      <div class="step">
+        <div class="step-glyph"></div>
+        <div class="step-num">שלב 03</div>
+        <h3>ליווי לאורך הדרך</h3>
+        <p>תהליך מותאם אישית — לא תבנית קבועה. יש מי שצריך 3 פגישות, יש מי שצריך 12. אנחנו מתקדמים בקצב שלך, לא בקצב של מערכת.</p>
+      </div>
+      <div class="step">
+        <div class="step-glyph"></div>
+        <div class="step-num">שלב 04</div>
+        <h3>יציאה לדרך עצמאית</h3>
+        <p>המטרה היא לא ליצור תלות. המטרה היא שתצא מהתהליך עם כלים אמיתיים שמלווים אותך כל החיים — ועם תחושה שיש לך גישה לעצמך.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== ABOUT ========== -->
+<section class="about" id="about">
+  <div class="wrap">
+    <div class="about-grid">
+      <div class="about-photo">
+        <div class="halo"></div>
+        <div class="ph">תמונה של דור<br><span style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--ink-dim)">להשלמה</span></div>
+        <div class="caption"><span>דור אוסטריך · 2026</span></div>
+      </div>
+      <div>
+        <div class="eyebrow mono">מי זה דור</div>
+        <h2>מפרק רגשות.<br><em>מרכיב אנשים.</em></h2>
+        <p>שמי דור אוסטריך, ואני מלווה אנשים, זוגות וילדים בתהליכים רגשיים-אנרגטיים. אני לא פסיכולוג, ואני לא מתיימר להיות. אני מתמחה במשהו אחר לגמרי — בתרגום רגשות למילים.</p>
+        <p>יש לי שיטה שעבדה על עצמי לפני שהיא עבדה על אחרים. עברתי בעצמי תהליכים שהבנתי בהם שהמערכת הרגילה — תרופות, שיחות, אבחנות — לא תמיד יודעת לגשת למקום הנכון. כשמצאתי את הגישה האנרגטית, משהו בי השתנה. ומאז, אני עוזר לאנשים אחרים להגיע לאותו מקום.</p>
+        <p>אני מקבל אנשים בכל גיל ובכל מצב — יחידים, זוגות, הורים וילדים. עברתי הכשרה ייעודית בעבודה עם טראומות, ויש לי גישה ייחודית שמשלבת בין רגש, גוף ומילים. 95% מהמטופלים שלי מדווחים על הקלה משמעותית כבר אחרי הפגישה הראשונה.</p>
+        <div class="about-stats">
+          <div class="about-stat">
+            <div class="n">95%</div>
+            <div class="l">מדווחים על הקלה מהטיפול הראשון</div>
+          </div>
+          <div class="about-stat">
+            <div class="n">3</div>
+            <div class="l">קהלים — אנשים, זוגות, ילדים</div>
+          </div>
+          <div class="about-stat">
+            <div class="n">0</div>
+            <div class="l">תרופות — שיטה טבעית לחלוטין</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== FAQ ========== -->
+<section class="faq" id="faq">
+  <div class="wrap">
+    <div class="faq-grid">
+      <div>
+        <div class="eyebrow mono">שאלות נפוצות</div>
+        <h2>שאלות שאנשים<br><em>באמת</em> שואלים.</h2>
+        <p style="color:var(--ink-soft);margin-top:20px;font-size:15px">לא מצאת תשובה? כתוב לי, ואחזור אליך תוך 24 שעות.</p>
+      </div>
+      <div class="faq-list">
+        <details class="faq-item" open>
+          <summary><h3>מה ההבדל בין מה שאתה עושה לבין פסיכולוג?</h3><span class="faq-toggle">+</span></summary>
+          <div class="faq-answer">פסיכולוג עובד דרך השיחה והניתוח. אני עובד דרך הרגש והגוף. שיחה היא חלק מהתהליך, אבל היא לא הכלי המרכזי. בגלל זה התהליך הרבה יותר קצר — ובגלל זה התוצאות מורגשות הרבה יותר מהר.</div>
+        </details>
+        <details class="faq-item">
+          <summary><h3>זה ריפוי "אנרגטי" — זה אומר שזה רוחני?</h3><span class="faq-toggle">+</span></summary>
+          <div class="faq-answer">לא. זה לא דת, זה לא אמונה, וזה לא דורש ממך להאמין במשהו מסוים. "אנרגטי" פשוט אומר שאנחנו עובדים עם המידע שהגוף שומר — לא רק עם הסיפור שהראש מספר.</div>
+        </details>
+        <details class="faq-item">
+          <summary><h3>אני סקפטי. זה בעיה?</h3><span class="faq-toggle">+</span></summary>
+          <div class="faq-answer">בכלל לא. רוב האנשים שמגיעים אליי הם סקפטיים בהתחלה. אני לא צריך שתאמין במשהו — אני צריך שתבוא ותחווה. השינוי מדבר בעד עצמו.</div>
+        </details>
+        <details class="faq-item">
+          <summary><h3>כמה זמן לוקח התהליך?</h3><span class="faq-toggle">+</span></summary>
+          <div class="faq-answer">זה תלוי בך. יש מי שמרגיש פתרון בפגישה אחת. יש מי שזקוק ל-3-5 פגישות. ויש מי שבוחר ליווי ארוך טווח. נחליט יחד אחרי הפגישה הראשונה.</div>
+        </details>
+        <details class="faq-item">
+          <summary><h3>זה מתאים לילדים?</h3><span class="faq-toggle">+</span></summary>
+          <div class="faq-answer">כן. אני עובד הרבה עם ילדים ובני נוער שסובלים מחרדות, התפרצויות, או קושי לבטא רגשות. השיטה מותאמת לגיל — והילדים לרוב מתחברים אליה מהר יותר ממבוגרים.</div>
+        </details>
+        <details class="faq-item">
+          <summary><h3>האם יש מקרים שזה לא יעבוד?</h3><span class="faq-toggle">+</span></summary>
+          <div class="faq-answer">כן, ואני אומר את זה ביושר. אם יש מצב פסיכיאטרי חמור שדורש טיפול תרופתי, אני אפנה אותך לאיש המקצוע הנכון. אני מאמין בשילוב — לא בהחלפה.</div>
+        </details>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== FINAL CTA ========== -->
+<section class="final-cta" id="contact">
+  <div class="wrap">
+    <div class="final-box">
+      <div class="eyebrow mono" style="justify-content:center">קריאה לפעולה</div>
+      <h2>לא חייבים להמשיך לחיות<br>עם <em>הכאב הזה</em>.</h2>
+      <p>שיחת היכרות אורכת 20 דקות, היא לא עולה כסף, ואין בה שום מחויבות. תספר לי מה אתה מביא, אני אגיד לך אם אני יכול לעזור — וביחד נחליט מה הצעד הבא.</p>
+      <a href="#" class="btn btn-primary">
+        <span>קבע שיחת היכרות חינם</span>
+        <span class="arrow">←</span>
+      </a>
+      <div class="final-trust">
+        <span>ללא עלות</span>
+        <span>ללא מחויבות</span>
+        <span>תשובה תוך 24 שעות</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="logo">
+    <div class="logo-mark">דא</div>
+    <div class="logo-text">דור אוסטריך · ליווי רגשי-אנרגטי</div>
+  </div>
+  <div class="socials">
+    <span>מתרגם רגשות למילים</span>
+    <a href="#contact" class="phone-link">קבע שיחה</a>
+  </div>
+  <div>© 2026 · מפרק רגשות, מרכיב אנשים</div>
+</footer>
+
+<!-- ========== TWEAKS ========== -->
+<div class="tweaks" id="tweaks">
+  <h5>פלטת צבעים</h5>
+  <div class="palette-grid" id="paletteGrid"></div>
+</div>
+
+<script>
+  const TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
+    "palette": "dawn"
+  }/*EDITMODE-END*/;
+
+  const palettes = [
+    {id:"cosmos",   name:"קוסמוס",   swatches:["#0b0716","#8b6ff0","#c9a86a"]},
+    {id:"twilight", name:"דמדומים", swatches:["#0a0e1f","#6f8dff","#e8b0d6"]},
+    {id:"dawn",     name:"שחר",     swatches:["#140b18","#c67fd4","#ffb37a"]},
+    {id:"forest",   name:"יער",     swatches:["#071411","#69b38e","#d6b87a"]},
+  ];
+
+  function applyPalette(id){
+    document.documentElement.setAttribute("data-palette", id);
+    document.querySelectorAll(".palette-btn").forEach(b=>{
+      b.classList.toggle("active", b.dataset.id === id);
+    });
+  }
+  function renderPaletteGrid(){
+    const grid = document.getElementById("paletteGrid");
+    grid.innerHTML = palettes.map(p=>`
+      <button class="palette-btn" data-id="${p.id}" onclick="pickPalette('${p.id}')">
+        <div class="palette-swatches">
+          ${p.swatches.map(s=>`<i style="background:${s}"></i>`).join("")}
+        </div>
+        <span>${p.name}</span>
+      </button>
+    `).join("");
+  }
+  function pickPalette(id){
+    applyPalette(id);
+    window.parent.postMessage({type:'__edit_mode_set_keys', edits:{palette:id}}, '*');
+  }
+
+  window.addEventListener("message",(e)=>{
+    const d = e.data || {};
+    if(d.type === "__activate_edit_mode"){ document.getElementById("tweaks").classList.add("show") }
+    if(d.type === "__deactivate_edit_mode"){ document.getElementById("tweaks").classList.remove("show") }
+  });
+  renderPaletteGrid();
+  applyPalette(TWEAK_DEFAULTS.palette);
+  window.parent.postMessage({type:"__edit_mode_available"}, "*");
+
+  /* STARS */
+  const starsEl = document.getElementById("stars");
+  let starHtml = "";
+  for(let i=0;i<80;i++){
+    const x = Math.random()*100, y = Math.random()*100;
+    const d = (Math.random()*4 + 2).toFixed(1);
+    const delay = (Math.random()*4).toFixed(1);
+    const sz = (Math.random()*1.5 + 1).toFixed(1);
+    starHtml += `<i style="left:${x}%;top:${y}%;width:${sz}px;height:${sz}px;animation-duration:${d}s;animation-delay:${delay}s"></i>`;
+  }
+  starsEl.innerHTML = starHtml;
+
+  /* SMOOTH SCROLL */
+  document.querySelectorAll('a[href^="#"]').forEach(a=>{
+    a.addEventListener("click",(e)=>{
+      const id = a.getAttribute("href");
+      if(id.length>1){
+        const target = document.querySelector(id);
+        if(target){
+          e.preventDefault();
+          window.scrollTo({top: target.offsetTop - 60, behavior:"smooth"});
+        }
+      }
+    });
+  });
+</script>
+
+</body>
+</html>
