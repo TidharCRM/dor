@@ -296,19 +296,21 @@
     aspect-ratio:4/5;border-radius:24px;position:relative;overflow:hidden;
     border:1px solid var(--line);
     box-shadow:0 30px 80px -30px rgba(0,0,0,.6);
+    background:linear-gradient(135deg, var(--bg-1), var(--bg-2));
+  }
+  .about-photo img{
+    position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 22%;display:block;z-index:0;
+  }
+  .about-photo::after{
+    content:"";position:absolute;inset:0;pointer-events:none;z-index:1;
     background:
       linear-gradient(180deg, transparent 55%, rgba(20,11,24,.55) 100%),
-      radial-gradient(ellipse at top right, rgba(198,127,212,.18), transparent 60%),
-      linear-gradient(135deg, var(--bg-1), var(--bg-2));
-    display:grid;place-items:center;
+      radial-gradient(ellipse at top right, rgba(198,127,212,.18), transparent 60%);
   }
   .about-photo .halo{
     position:absolute;inset:-30%;border-radius:50%;
     background:radial-gradient(circle, var(--glow-a) 0%, transparent 55%);
     filter:blur(20px);z-index:-1;
-  }
-  .about-photo .ph{
-    font-family:"Mamilla",serif;font-size:15px;color:var(--ink-dim);text-align:center;padding:24px;
   }
   .about-photo .caption{
     position:absolute;bottom:20px;right:20px;left:20px;z-index:2;
@@ -427,6 +429,7 @@
     nav.top{padding:14px 24px}
     nav.top ul{display:none}
     .pain-head,.about-grid,.faq-grid{grid-template-columns:1fr;gap:40px}
+    .faq-grid > div:first-child{position:static;top:auto}
     .pain-grid{grid-template-columns:1fr}
     .flow-steps{grid-template-columns:1fr}
     .final-box{padding:48px 28px}
@@ -453,7 +456,7 @@
     <div class="logo-text">דור אוסטריך<br><span class="sub">ליווי רגשי-אנרגטי</span></div>
   </div>
   <ul>
-    <li><a href="#pain">אם הגעת לכאן</a></li>
+    <li><a href="#pain">אם אתה כבר כאן</a></li>
     <li><a href="#method">השיטה</a></li>
     <li><a href="#flow">תהליך</a></li>
     <li><a href="#about">עליי</a></li>
@@ -468,7 +471,7 @@
   <div class="wrap">
     <div class="eyebrow mono">דור אוסטריך · ליווי רגשי-אנרגטי</div>
     <h1>
-      ניסית הכל.<br>
+      אתה ניסית הכל.<br>
       תרופות, פסיכולוגים,<br>
       ועדיין <em>שום דבר לא זז</em>.
     </h1>
@@ -495,16 +498,16 @@
   </div>
 </section>
 
-<!-- ========== PAIN (אם הגעת לכאן) ========== -->
+<!-- ========== PAIN (אם אתה כבר כאן) ========== -->
 <section class="pain" id="pain">
   <div class="wrap">
     <div class="pain-head">
       <div>
-        <div class="eyebrow mono">אם הגעת לכאן</div>
+        <div class="eyebrow mono">אם אתה כבר כאן</div>
         <h2>כנראה שגם אתה מכיר<br>את <em>התחושה הזאת</em>.</h2>
       </div>
       <div>
-        <p class="intro">שבה הכאב הפנימי לא מרפה — לא משנה כמה ניסית. לא משנה לכמה מטפלים הלכת, כמה ספרים קראת, או כמה כדורים לקחת.</p>
+        <p class="intro">שבה הכאב הפנימי לא מרפה — לא משנה כמה אתה ניסית. לא משנה לכמה מטפלים אתה הלכת, כמה ספרים אתה קראת, או כמה כדורים אתה לקחת.</p>
       </div>
     </div>
 
@@ -595,12 +598,12 @@
       <p>ליווי רגשי-אנרגטי הוא לא לכולם. הוא לאלה שכבר עברו את השלב של "אולי זה יעבור מעצמו".</p>
     </div>
     <div class="audience-list">
-      <div class="audience-row"><div class="mark">✓</div><div>ניסית פסיכולוגים, פסיכיאטרים, או טיפולים מערביים — והרגשת שמשהו פשוט לא מתחבר.</div></div>
-      <div class="audience-row"><div class="mark">✓</div><div>את לא רוצה לקחת תרופות — לא בגלל שאת נגד, אלא כי את יודעת שהבעיה לא נמצאת שם.</div></div>
+      <div class="audience-row"><div class="mark">✓</div><div>אתה ניסית פסיכולוגים, פסיכיאטרים, או טיפולים מערביים — ואתה הרגשת שמשהו פשוט לא מתחבר.</div></div>
+      <div class="audience-row"><div class="mark">✓</div><div>אתה לא רוצה לקחת תרופות — לא בגלל שאתה נגד, אלא כי אתה יודע שהבעיה לא נמצאת שם.</div></div>
       <div class="audience-row"><div class="mark">✓</div><div>יש לך טראומה — מקטנות, ממערכת יחסים, מהצבא, מאירוע — שעדיין משפיעה עליך היום.</div></div>
-      <div class="audience-row"><div class="mark">✓</div><div>את במערכת זוגית שמרגישה תקועה — וניסיתם הכל מלבד לבדוק מה באמת קורה ברובד הרגשי.</div></div>
-      <div class="audience-row"><div class="mark">✓</div><div>יש לך ילד או נער שסובל — מחרדות, מהתפרצויות, או מקושי לבטא רגשות — ואת מחפשת מישהו שידע לדבר איתו אחרת.</div></div>
-      <div class="audience-row"><div class="mark">✓</div><div>את מרגישה שיש משהו פנימי שתקוע — אבל אין לך מילים להגדיר אותו.</div></div>
+      <div class="audience-row"><div class="mark">✓</div><div>אתה במערכת זוגית שמרגישה תקועה — וניסיתם הכל מלבד לבדוק מה באמת קורה ברובד הרגשי.</div></div>
+      <div class="audience-row"><div class="mark">✓</div><div>יש לך ילד או נער שסובל — מחרדות, מהתפרצויות, או מקושי לבטא רגשות — ואתה מחפש מישהו שידע לדבר איתו אחרת.</div></div>
+      <div class="audience-row"><div class="mark">✓</div><div>אתה מרגיש שיש משהו פנימי שתקוע — אבל אין לך מילים להגדיר אותו.</div></div>
     </div>
   </div>
 </section>
@@ -618,7 +621,7 @@
         <div class="step-glyph"></div>
         <div class="step-num">שלב 01</div>
         <h3>שיחת היכרות</h3>
-        <p>שיחה קצרה (כ-20 דקות) שבה אנחנו מבינים מה אתה מביא, מה ניסית עד היום, ומה הציפיות שלך. אם אני לא חושב שאני האדם הנכון בשבילך — אגיד לך את זה ישר.</p>
+        <p>שיחה קצרה (כ-20 דקות) שבה אנחנו מבינים מה אתה מביא, מה אתה ניסית עד היום, ומה הציפיות שלך. אם אני לא חושב שאני האדם הנכון בשבילך — אגיד לך את זה ישר.</p>
       </div>
       <div class="step">
         <div class="step-glyph"></div>
@@ -648,7 +651,7 @@
     <div class="about-grid">
       <div class="about-photo">
         <div class="halo"></div>
-        <div class="ph">תמונה של דור<br><span style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--ink-dim)">להשלמה</span></div>
+        <img src="person.png" alt="דור אוסטריך" width="800" height="1000" loading="lazy" decoding="async">
         <div class="caption"><span>דור אוסטריך · 2026</span></div>
       </div>
       <div>
@@ -683,7 +686,7 @@
       <div>
         <div class="eyebrow mono">שאלות נפוצות</div>
         <h2>שאלות שאנשים<br><em>באמת</em> שואלים.</h2>
-        <p style="color:var(--ink-soft);margin-top:20px;font-size:15px">לא מצאת תשובה? כתוב לי, ואחזור אליך תוך 24 שעות.</p>
+        <p style="color:var(--ink-soft);margin-top:20px;font-size:15px">אם אתה לא מצאת תשובה — כתוב לי, ואחזור אליך תוך 24 שעות.</p>
       </div>
       <div class="faq-list">
         <details class="faq-item" open>
