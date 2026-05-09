@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>דור אוסטריך · ליווי רגשי-אנרגטי</title>
+<title>דור אוסטריך · ליווי רגשי ואנרגטי</title>
 <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
   /* ---------- PREMIUM FONTUP FACES ---------- */
@@ -92,8 +92,8 @@
     box-shadow:0 0 24px var(--glow-a), 0 0 0 1px var(--line);
     color:var(--bg-0);font-family:"Mamilla",serif;font-weight:600;font-size:15px;
   }
-  .logo-text{font-family:"Mamilla",serif;font-size:19px;letter-spacing:.04em;line-height:1.1}
-  .logo-text .sub{font-size:11px;letter-spacing:.2em;color:var(--ink-dim);font-family:'JetBrains Mono',monospace;text-transform:uppercase}
+  .logo-text{font-family:"Mamilla",serif;font-size:19px;letter-spacing:.04em;line-height:1.25}
+  .logo-text .sub{font-size:14px;letter-spacing:.02em;color:var(--ink-soft);font-family:"Mamilla",serif;font-weight:400;text-transform:none;display:block;margin-top:2px}
   nav.top ul{display:flex;gap:34px;list-style:none;margin:0;padding:0;font-size:14px;color:var(--ink-soft)}
   nav.top ul a:hover{color:var(--ink)}
   .nav-cta{padding:9px 18px;border:1px solid var(--line);border-radius:999px;font-size:13px;transition:.3s;background:rgba(255,255,255,.02)}
@@ -102,8 +102,7 @@
   /* ---------- LAYOUT ---------- */
   .wrap{max-width:1240px;margin:0 auto;padding:0 48px}
   section{position:relative;padding:140px 0}
-  .eyebrow{display:inline-flex;align-items:center;gap:10px;margin-bottom:22px}
-  .eyebrow::before{content:"";width:28px;height:1px;background:var(--accent)}
+  .eyebrow{display:inline-block;margin-bottom:22px}
 
   /* ---------- HERO ---------- */
   .hero{padding-top:190px;padding-bottom:120px;text-align:center;position:relative}
@@ -200,11 +199,12 @@
   .method-head h2 em{font-style:italic;color:var(--accent)}
   .method-head p{color:var(--ink-soft);max-width:60ch;margin:24px auto 0;font-size:17px}
   .method-cols{
-    display:grid;grid-template-columns:repeat(3,1fr);gap:1px;
-    background:var(--line);border:1px solid var(--line);border-radius:24px;overflow:hidden;
+    display:grid;grid-template-columns:repeat(3,1fr);gap:14px;
   }
   .method-col{
-    background:var(--bg-1);padding:48px 36px;display:flex;flex-direction:column;min-height:280px;
+    background:linear-gradient(180deg, rgba(255,255,255,.025), rgba(255,255,255,0));
+    border:1px solid var(--line);border-radius:20px;
+    padding:44px 32px;display:flex;flex-direction:column;min-height:280px;
     transition:.4s;
   }
   .method-col:hover{background:linear-gradient(180deg, rgba(198,127,212,.08), var(--bg-1))}
@@ -232,13 +232,12 @@
   }
 
   /* ---------- BIG STAT (95%) ---------- */
-  .big-stat-grid{display:grid;grid-template-columns:5fr 7fr;gap:80px;align-items:center}
+  .big-stat-grid{display:grid;grid-template-columns:4fr 7fr;gap:60px;align-items:center}
   .big-stat-num{
     font-family:"Mamilla",serif;font-weight:600;
-    font-size:clamp(140px,18vw,260px);line-height:.9;letter-spacing:-.04em;
+    font-size:clamp(110px,14vw,200px);line-height:.95;letter-spacing:-.03em;
     color:var(--accent);
-    text-shadow:0 0 60px var(--glow-a);
-    display:flex;align-items:flex-start;
+    display:flex;align-items:flex-start;justify-content:center;
   }
   .big-stat-num sup{font-size:.4em;font-weight:500;margin-top:.15em}
   .big-stat-text h2{
@@ -283,12 +282,6 @@
   .step .step-num{font-family:"JetBrains Mono",monospace;font-size:11px;letter-spacing:.2em;color:var(--accent);margin-bottom:24px}
   .step h3{font-family:"Mamilla",serif;font-size:21px;font-weight:500;margin:0 0 12px;line-height:1.3;letter-spacing:-.01em}
   .step p{font-size:14px;color:var(--ink-soft);margin:0;line-height:1.7}
-  .step-glyph{
-    width:42px;height:42px;margin-bottom:24px;border-radius:50%;
-    border:1px solid var(--line);display:grid;place-items:center;
-    background:radial-gradient(circle at 30% 30%, var(--glow-a), transparent 70%);
-  }
-  .step-glyph::after{content:"";width:8px;height:8px;border-radius:50%;background:var(--accent);box-shadow:0 0 12px var(--accent)}
 
   /* ---------- ABOUT ---------- */
   .about-grid{display:grid;grid-template-columns:5fr 7fr;gap:80px;align-items:center}
@@ -303,9 +296,7 @@
   }
   .about-photo::after{
     content:"";position:absolute;inset:0;pointer-events:none;z-index:1;
-    background:
-      linear-gradient(180deg, transparent 55%, rgba(20,11,24,.55) 100%),
-      radial-gradient(ellipse at top right, rgba(198,127,212,.18), transparent 60%);
+    background:linear-gradient(180deg, transparent 70%, rgba(20,11,24,.35) 100%);
   }
   .about-photo .halo{
     position:absolute;inset:-30%;border-radius:50%;
@@ -457,7 +448,7 @@
 <nav class="top">
   <div class="logo">
     <div class="logo-mark">דא</div>
-    <div class="logo-text">דור אוסטריך<br><span class="sub">ליווי רגשי-אנרגטי</span></div>
+    <div class="logo-text">דור אוסטריך<span class="sub">ליווי רגשי • אנרגטי</span></div>
   </div>
   <ul>
     <li><a href="#pain">אם אתה כבר כאן</a></li>
@@ -466,28 +457,27 @@
     <li><a href="#about">עליי</a></li>
     <li><a href="#faq">שאלות</a></li>
   </ul>
-  <a href="#contact" class="nav-cta">קבעו פגישת היכרות ←</a>
+  <a href="#contact" class="nav-cta">קבעו שיחת היכרות</a>
 </nav>
 
 <!-- ========== HERO ========== -->
 <section class="hero">
   <div class="hero-orb"></div>
   <div class="wrap">
-    <div class="eyebrow mono">דור אוסטריך · ליווי רגשי-אנרגטי</div>
+    <div class="eyebrow mono">דור אוסטריך · ליווי רגשי • אנרגטי</div>
     <h1>
-      אתה ניסית הכל.<br>
-      תרופות, פסיכולוגים,<br>
+      ניסית הכל.<br>
+      דיברת, התאמצת,<br>
       ועדיין <em>שום דבר לא זז</em>.
     </h1>
     <p class="lede">
-      יש דרך אחרת. בלי כדורים. בלי שנים על הספה.
-      שיטה שמדברת ישר אל המקום שבו הכאב באמת יושב — ומשחררת אותו משם.
+      יש דרך אחרת. שיטה שעובדת לעומק, ומדברת ישר אל המקום שבו הכאב באמת יושב.
       <strong>95% מהמטופלים מדווחים על הקלה כבר מהפגישה הראשונה.</strong>
     </p>
     <div class="hero-cta-row">
       <a href="#contact" class="btn btn-primary">
-        <span>קבעו פגישת היכרות</span>
-        <span class="arrow">←</span>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        <span>קבעו שיחת היכרות</span>
       </a>
       <div class="stat-pill">
         <div class="num">95%</div>
@@ -496,8 +486,8 @@
     </div>
     <div class="hero-meta">
       <span>אנשים · זוגות · ילדים</span>
-      <span>פגישת היכרות חינם</span>
-      <span>ללא תרופות · ללא תופעות לוואי</span>
+      <span>שיחת היכרות חינם</span>
+      <span>ליווי אישי בקצב שלך</span>
     </div>
   </div>
 </section>
@@ -511,19 +501,19 @@
         <h2>כנראה שגם אתה מכיר<br>את <em>התחושה הזאת</em>.</h2>
       </div>
       <div>
-        <p class="intro">שבה הכאב הפנימי לא מרפה — לא משנה כמה אתה ניסית. לא משנה לכמה מטפלים אתה הלכת, כמה ספרים אתה קראת, או כמה כדורים אתה לקחת.</p>
+        <p class="intro">שבה הכאב הפנימי לא מרפה. לא משנה כמה ניסית, לכמה מטפלים הלכת, או כמה ספרים קראת.</p>
       </div>
     </div>
 
     <div class="pain-grid">
       <div class="pain-card">
         <div class="pain-num">01</div>
-        <h3>הסטיגמה של התרופות</h3>
-        <p>אמרו לך שזו הדרך היחידה. תרופות לחרדה, נוגדי דיכאון, כדורי שינה. אתה לא רוצה לחיות ככה — ובצדק.</p>
+        <h3>הרגשת שאין דרך אחרת</h3>
+        <p>אמרו לך שזה כל מה שיש. אתה מרגיש שיש מקום עמוק יותר לעבוד ממנו, ובצדק. יש דרך אחרת.</p>
       </div>
       <div class="pain-card">
         <div class="pain-num">02</div>
-        <h3>שנים על הספה, בלי תוצאה</h3>
+        <h3>שנים של שיחות, בלי תוצאה</h3>
         <p>פסיכולוגים, מטפלים, שיחות אינסופיות. דיברתם על העבר עד אין סוף, אבל ההווה עדיין כואב באותו מקום.</p>
       </div>
       <div class="pain-card">
@@ -544,21 +534,21 @@
 <section class="method" id="method">
   <div class="wrap">
     <div class="method-head">
-      <div class="eyebrow mono" style="justify-content:center">איך זה עובד</div>
+      <div class="eyebrow mono">איך זה עובד</div>
       <h2>יש שפה שהגוף מבין<br><em>לפני</em> שהמילים מגיעות.</h2>
-      <p>הטיפול הרגשי-אנרגטי לא מנסה לנתח את הכאב — הוא ניגש ישר אל המקום שבו הוא יושב בגוף, ומשחרר אותו משם. זאת הסיבה שזה עובד מהר. זאת הסיבה שאנשים מרגישים שינוי כבר באותה הפגישה.</p>
+      <p>הליווי הרגשי האנרגטי לא מנסה לנתח את הכאב, אלא ניגש ישר אל המקום שבו הוא יושב בגוף ומשחרר אותו משם. זאת הסיבה שזה עובד מהר. זאת הסיבה שאנשים מרגישים שינוי כבר באותה הפגישה.</p>
     </div>
 
     <div class="method-cols">
       <div class="method-col">
         <div class="method-num">01 / גישה</div>
-        <h3>בלי תרופות, בלי תופעות לוואי</h3>
-        <p>הגוף יודע לרפא את עצמו כשנותנים לו את הכלים הנכונים. אנחנו עובדים עם המערכת הטבעית שלך — לא נגדה.</p>
+        <h3>גישה אחרת לחלוטין</h3>
+        <p>אנחנו עובדים עם המערכת הטבעית שלך, בקצב שלך. לא ניתוח אינסופי, אלא מפגש ישיר עם המקום שבו הרגש באמת יושב.</p>
       </div>
       <div class="method-col">
         <div class="method-num">02 / שיטה</div>
         <h3>תרגום רגשות למילים</h3>
-        <p>מה שאתה לא יכול להגדיר, אתה לא יכול לרפא. אני עוזר לך לפרק את הרגש לחלקים שאפשר באמת לעבוד איתם — ואז להרכיב אותך מחדש.</p>
+        <p>מה שאתה לא יכול להגדיר, אתה לא יכול לרפא. אני עוזר לך לפרק את הרגש לחלקים שאפשר באמת לעבוד איתם, ואז להרכיב אותך מחדש.</p>
       </div>
       <div class="method-col">
         <div class="method-num">03 / תוצאה</div>
@@ -573,8 +563,8 @@
 <section class="quote">
   <div class="wrap">
     <blockquote>
-      כשיש פחות ביקורת פנימית — יש יותר שקט. יותר בהירות. ויותר מקום להיות אתה.
-      <cite>— דור אוסטריך</cite>
+      כשיש פחות ביקורת פנימית, יש יותר שקט. יותר בהירות. ויותר מקום להיות אתה.
+      <cite>דור אוסטריך</cite>
     </blockquote>
   </div>
 </section>
@@ -586,8 +576,8 @@
       <div class="big-stat-num">95<sup>%</sup></div>
       <div class="big-stat-text">
         <div class="eyebrow mono">המספרים מדברים</div>
-        <h2>תשעה מתוך עשרה אנשים<br>מרגישים את <em>השינוי</em><br>כבר בפגישה הראשונה.</h2>
-        <p>זה לא קסם, וזה לא הבטחת שווא. זאת תוצאה של שיטה שמדלגת על השלב של "בואו נדבר על זה" — וניגשת ישר למקום שבו הרגש באמת חי. רוב האנשים שמגיעים אליי כבר ניסו דרכים אחרות. הם לא באים בשביל עוד ניסיון — הם באים בשביל תוצאה.</p>
+        <h2>תשעה מתוך עשרה אנשים מרגישים את <em>השינוי</em> כבר בפגישה הראשונה.</h2>
+        <p>זה לא קסם, וזה לא הבטחת שווא. זאת תוצאה של שיטה שמדלגת על השלב של "בואו נדבר על זה" וניגשת ישר למקום שבו הרגש באמת חי. רוב האנשים שמגיעים אליי כבר ניסו דרכים אחרות. הם לא באים בשביל עוד ניסיון, הם באים בשביל תוצאה.</p>
       </div>
     </div>
   </div>
@@ -597,17 +587,17 @@
 <section class="audience">
   <div class="wrap">
     <div class="audience-head">
-      <div class="eyebrow mono" style="justify-content:center">למי זה מתאים</div>
+      <div class="eyebrow mono">למי זה מתאים</div>
       <h2>זה <em>בשבילך</em> אם...</h2>
-      <p>ליווי רגשי-אנרגטי הוא לא לכולם. הוא לאלה שכבר עברו את השלב של "אולי זה יעבור מעצמו".</p>
+      <p>הליווי הזה הוא לא לכולם. הוא לאלה שכבר עברו את השלב של "אולי זה יעבור מעצמו".</p>
     </div>
     <div class="audience-list">
-      <div class="audience-row"><div class="mark">✓</div><div>אתה ניסית פסיכולוגים, פסיכיאטרים, או טיפולים מערביים — ואתה הרגשת שמשהו פשוט לא מתחבר.</div></div>
-      <div class="audience-row"><div class="mark">✓</div><div>אתה לא רוצה לקחת תרופות — לא בגלל שאתה נגד, אלא כי אתה יודע שהבעיה לא נמצאת שם.</div></div>
-      <div class="audience-row"><div class="mark">✓</div><div>יש לך טראומה — מקטנות, ממערכת יחסים, מהצבא, מאירוע — שעדיין משפיעה עליך היום.</div></div>
-      <div class="audience-row"><div class="mark">✓</div><div>אתה במערכת זוגית שמרגישה תקועה — וניסיתם הכל מלבד לבדוק מה באמת קורה ברובד הרגשי.</div></div>
-      <div class="audience-row"><div class="mark">✓</div><div>יש לך ילד או נער שסובל — מחרדות, מהתפרצויות, או מקושי לבטא רגשות — ואתה מחפש מישהו שידע לדבר איתו אחרת.</div></div>
-      <div class="audience-row"><div class="mark">✓</div><div>אתה מרגיש שיש משהו פנימי שתקוע — אבל אין לך מילים להגדיר אותו.</div></div>
+      <div class="audience-row"><div class="mark">✓</div><div>ניסית מטפלים ושיטות שונות, והרגשת שמשהו פשוט לא מתחבר.</div></div>
+      <div class="audience-row"><div class="mark">✓</div><div>אתה מחפש משהו עמוק יותר. אתה מרגיש שהבעיה יושבת במקום שעוד לא הגעת אליו.</div></div>
+      <div class="audience-row"><div class="mark">✓</div><div>יש לך טראומה מקטנות, ממערכת יחסים, מהצבא או מאירוע, שעדיין משפיעה עליך היום.</div></div>
+      <div class="audience-row"><div class="mark">✓</div><div>אתה במערכת זוגית שמרגישה תקועה, וניסיתם הכל מלבד לבדוק מה באמת קורה ברובד הרגשי.</div></div>
+      <div class="audience-row"><div class="mark">✓</div><div>יש לך ילד או נער שסובל מחרדות, מהתפרצויות או מקושי לבטא רגשות, ואתה מחפש מישהו שידע לדבר איתו אחרת.</div></div>
+      <div class="audience-row"><div class="mark">✓</div><div>אתה מרגיש שיש משהו פנימי שתקוע, אבל אין לך מילים להגדיר אותו.</div></div>
     </div>
   </div>
 </section>
@@ -616,34 +606,30 @@
 <section class="flow" id="flow">
   <div class="wrap">
     <div class="flow-head">
-      <div class="eyebrow mono" style="justify-content:center">איך נראה תהליך הליווי</div>
-      <h2>ארבעה שלבים <em>פשוטים</em> —<br>בלי הפתעות, בלי לחץ.</h2>
-      <p>תהליך מותאם אישית, לא תבנית קבועה. אנחנו מתקדמים בקצב שלך — לא בקצב של מערכת.</p>
+      <div class="eyebrow mono">איך נראה תהליך הליווי</div>
+      <h2>ארבעה שלבים <em>פשוטים</em>.</h2>
+      <p>תהליך מותאם אישית, לא תבנית קבועה. אנחנו מתקדמים בקצב שלך, לא בקצב של מערכת.</p>
     </div>
     <div class="flow-steps">
       <div class="step">
-        <div class="step-glyph"></div>
         <div class="step-num">שלב 01</div>
         <h3>שיחת היכרות</h3>
-        <p>שיחה קצרה (כ-20 דקות) שבה אנחנו מבינים מה אתה מביא, מה אתה ניסית עד היום, ומה הציפיות שלך. אם אני לא חושב שאני האדם הנכון בשבילך — אגיד לך את זה ישר.</p>
+        <p>שיחה קצרה (כ-20 דקות) שבה אנחנו מבינים מה אתה מביא, מה ניסית עד היום, ומה הציפיות שלך. אם אני לא חושב שאני האדם הנכון בשבילך, אגיד לך את זה ישר.</p>
       </div>
       <div class="step">
-        <div class="step-glyph"></div>
         <div class="step-num">שלב 02</div>
         <h3>הפגישה הראשונה</h3>
-        <p>פגישה אחת, פנים אל פנים או באונליין. כאן אנחנו מתחילים לפרק את הרגש לחלקים, ולשחרר את מה שתקוע. רוב האנשים מרגישים שינוי משמעותי כבר בפגישה הזאת.</p>
+        <p>פגישה אחת, פנים אל פנים או באונליין. כאן אנחנו מתחילים לפרק את הרגש לחלקים ולשחרר את מה שתקוע. רוב האנשים מרגישים שינוי משמעותי כבר בפגישה הזאת.</p>
       </div>
       <div class="step">
-        <div class="step-glyph"></div>
         <div class="step-num">שלב 03</div>
-        <h3>ליווי לאורך הדרך</h3>
-        <p>תהליך מותאם אישית — לא תבנית קבועה. יש מי שצריך 3 פגישות, יש מי שצריך 12. אנחנו מתקדמים בקצב שלך, לא בקצב של מערכת.</p>
+        <h3>ליווי לאורך תהליך מותאם אישית</h3>
+        <p>לא תבנית קבועה. יש מי שצריך 3 פגישות, יש מי שצריך 12. אנחנו מתקדמים בקצב שלך, לא בקצב של מערכת.</p>
       </div>
       <div class="step">
-        <div class="step-glyph"></div>
         <div class="step-num">שלב 04</div>
         <h3>יציאה לדרך עצמאית</h3>
-        <p>המטרה היא לא ליצור תלות. המטרה היא שתצא מהתהליך עם כלים אמיתיים שמלווים אותך כל החיים — ועם תחושה שיש לך גישה לעצמך.</p>
+        <p>המטרה היא לא ליצור תלות. המטרה היא שתצא מהתהליך עם כלים אמיתיים שמלווים אותך כל החיים, ועם תחושה שיש לך גישה לעצמך.</p>
       </div>
     </div>
   </div>
@@ -661,9 +647,9 @@
       <div>
         <div class="eyebrow mono">מי זה דור</div>
         <h2>מפרק רגשות.<br><em>מרכיב אנשים.</em></h2>
-        <p>שמי דור אוסטריך, ואני מלווה אנשים, זוגות וילדים בתהליכים רגשיים-אנרגטיים. אני לא פסיכולוג, ואני לא מתיימר להיות. אני מתמחה במשהו אחר לגמרי — בתרגום רגשות למילים.</p>
-        <p>יש לי שיטה שעבדה על עצמי לפני שהיא עבדה על אחרים. עברתי בעצמי תהליכים שהבנתי בהם שהמערכת הרגילה — תרופות, שיחות, אבחנות — לא תמיד יודעת לגשת למקום הנכון. כשמצאתי את הגישה האנרגטית, משהו בי השתנה. ומאז, אני עוזר לאנשים אחרים להגיע לאותו מקום.</p>
-        <p>אני מקבל אנשים בכל גיל ובכל מצב — יחידים, זוגות, הורים וילדים. עברתי הכשרה ייעודית בעבודה עם טראומות, ויש לי גישה ייחודית שמשלבת בין רגש, גוף ומילים. 95% מהמטופלים שלי מדווחים על הקלה משמעותית כבר אחרי הפגישה הראשונה.</p>
+        <p>שמי דור אוסטריך, ואני מלווה אנשים, זוגות וילדים בתהליכים רגשיים אנרגטיים. אני לא פסיכולוג, ואני לא מתיימר להיות. אני מתמחה במשהו אחר לגמרי, בתרגום רגשות למילים.</p>
+        <p>יש לי שיטה שעבדה על עצמי לפני שהיא עבדה על אחרים. עברתי בעצמי תהליכים שהבנתי בהם שהמערכת הרגילה לא תמיד יודעת לגשת למקום הנכון. כשמצאתי את הגישה האנרגטית, משהו בי השתנה. ומאז, אני עוזר לאנשים אחרים להגיע לאותו מקום.</p>
+        <p>אני מקבל אנשים בכל גיל ובכל מצב, יחידים, זוגות, הורים וילדים. עברתי הכשרה ייעודית בעבודה עם טראומות, ויש לי גישה ייחודית שמשלבת בין רגש, גוף ומילים. 95% מהמטופלים שלי מדווחים על הקלה משמעותית כבר אחרי הפגישה הראשונה.</p>
         <div class="about-stats">
           <div class="about-stat">
             <div class="n">95%</div>
@@ -671,11 +657,11 @@
           </div>
           <div class="about-stat">
             <div class="n">3</div>
-            <div class="l">קהלים — אנשים, זוגות, ילדים</div>
+            <div class="l">קהלים: אנשים, זוגות, ילדים</div>
           </div>
           <div class="about-stat">
-            <div class="n">0</div>
-            <div class="l">תרופות — שיטה טבעית לחלוטין</div>
+            <div class="n">1:1</div>
+            <div class="l">ליווי אישי בקצב שלך</div>
           </div>
         </div>
       </div>
@@ -690,32 +676,32 @@
       <div>
         <div class="eyebrow mono">שאלות נפוצות</div>
         <h2>שאלות שאנשים<br><em>באמת</em> שואלים.</h2>
-        <p style="color:var(--ink-soft);margin-top:20px;font-size:15px">אם אתה לא מצאת תשובה — כתוב לי, ואחזור אליך תוך 24 שעות.</p>
+        <p style="color:var(--ink-soft);margin-top:20px;font-size:15px">אם לא מצאת תשובה, כתוב לי ואחזור אליך תוך 24 שעות.</p>
       </div>
       <div class="faq-list">
         <details class="faq-item" open>
           <summary><h3>מה ההבדל בין מה שאתה עושה לבין פסיכולוג?</h3><span class="faq-toggle">+</span></summary>
-          <div class="faq-answer">פסיכולוג עובד דרך השיחה והניתוח. אני עובד דרך הרגש והגוף. שיחה היא חלק מהתהליך, אבל היא לא הכלי המרכזי. בגלל זה התהליך הרבה יותר קצר — ובגלל זה התוצאות מורגשות הרבה יותר מהר.</div>
+          <div class="faq-answer">פסיכולוג עובד בעיקר דרך שיחה וניתוח. אצלי השיחה היא רק חלק מהתהליך. אני עובד גם דרך הרגש והגוף. בגלל זה הרבה אנשים מרגישים שהתהליך יותר פרקטי, יותר עמוק, ולרוב גם יותר מהיר.</div>
         </details>
         <details class="faq-item">
-          <summary><h3>זה ריפוי "אנרגטי" — זה אומר שזה רוחני?</h3><span class="faq-toggle">+</span></summary>
-          <div class="faq-answer">לא. זה לא דת, זה לא אמונה, וזה לא דורש ממך להאמין במשהו מסוים. "אנרגטי" פשוט אומר שאנחנו עובדים עם המידע שהגוף שומר — לא רק עם הסיפור שהראש מספר.</div>
+          <summary><h3>ריפוי אנרגטי זה רוחני?</h3><span class="faq-toggle">+</span></summary>
+          <div class="faq-answer">לא חייב להיות אדם רוחני כדי להתחבר לתהליך הזה. פתיחות יכולה לעזור, אבל ממש לא חובה. גם אנשים מאוד סקפטיים עוברים פה תהליך משמעותי.</div>
         </details>
         <details class="faq-item">
-          <summary><h3>אני סקפטי. זה בעיה?</h3><span class="faq-toggle">+</span></summary>
-          <div class="faq-answer">בכלל לא. רוב האנשים שמגיעים אליי הם סקפטיים בהתחלה. אני לא צריך שתאמין במשהו — אני צריך שתבוא ותחווה. השינוי מדבר בעד עצמו.</div>
+          <summary><h3>מה אם אני סקפטי?</h3><span class="faq-toggle">+</span></summary>
+          <div class="faq-answer">האמת? אני דווקא אוהב לעבוד עם אנשים סקפטיים. בסוף, כשהם מרגישים את השינוי בעצמם, החיוך הרבה יותר גדול.</div>
         </details>
         <details class="faq-item">
-          <summary><h3>כמה זמן לוקח התהליך?</h3><span class="faq-toggle">+</span></summary>
-          <div class="faq-answer">זה תלוי בך. יש מי שמרגיש פתרון בפגישה אחת. יש מי שזקוק ל-3-5 פגישות. ויש מי שבוחר ליווי ארוך טווח. נחליט יחד אחרי הפגישה הראשונה.</div>
+          <summary><h3>כמה זמן לוקח תהליך?</h3><span class="faq-toggle">+</span></summary>
+          <div class="faq-answer">את זה נבין בשיחת ההיכרות. יש אנשים שמרגישים שינוי משמעותי כבר אחרי פגישה אחת. יש כאלה שצריכים 3 עד 5 פגישות, ויש מי שמתאים להם ליווי ארוך יותר. זה תלוי בקצב, בעומק התהליך, ובמה שנחליט שנכון עבורך.</div>
         </details>
         <details class="faq-item">
           <summary><h3>זה מתאים לילדים?</h3><span class="faq-toggle">+</span></summary>
-          <div class="faq-answer">כן. אני עובד הרבה עם ילדים ובני נוער שסובלים מחרדות, התפרצויות, או קושי לבטא רגשות. השיטה מותאמת לגיל — והילדים לרוב מתחברים אליה מהר יותר ממבוגרים.</div>
+          <div class="faq-answer">כן. אני עובד הרבה עם ילדים ובני נוער שסובלים מחרדות, התפרצויות או קושי לבטא רגשות. השיטה מותאמת לגיל, והילדים לרוב מתחברים אליה מהר יותר ממבוגרים.</div>
         </details>
         <details class="faq-item">
           <summary><h3>האם יש מקרים שזה לא יעבוד?</h3><span class="faq-toggle">+</span></summary>
-          <div class="faq-answer">כן, ואני אומר את זה ביושר. אם יש מצב פסיכיאטרי חמור שדורש טיפול תרופתי, אני אפנה אותך לאיש המקצוע הנכון. אני מאמין בשילוב — לא בהחלפה.</div>
+          <div class="faq-answer">כן, ואני אומר את זה ביושר. אם יש מצב שדורש טיפול מקצועי ייעודי, אני אפנה אותך לאיש המקצוע הנכון. אני מאמין בשילוב, לא בהחלפה.</div>
         </details>
       </div>
     </div>
@@ -726,13 +712,14 @@
 <section class="final-cta" id="contact">
   <div class="wrap">
     <div class="final-box">
-      <div class="eyebrow mono" style="justify-content:center">קריאה לפעולה</div>
-      <h2>לא חייבים להמשיך לחיות<br>עם <em>הכאב הזה</em>.</h2>
-      <p>שיחת היכרות אורכת 20 דקות, היא לא עולה כסף, ואין בה שום מחויבות. תספר לי מה אתה מביא, אני אגיד לך אם אני יכול לעזור — וביחד נחליט מה הצעד הבא.</p>
+      <div class="eyebrow mono">קריאה לפעולה</div>
+      <h2>לא חייב להמשיך<br>לחיות <em>עם זה</em>.</h2>
+      <p>שיחת היכרות אורכת 20 דקות, היא לא עולה כסף ואין בה שום מחויבות. תספר לי מה אתה מביא, אני אגיד לך אם אני יכול לעזור, וביחד נחליט מה הצעד הבא.</p>
       <a href="#" class="btn btn-primary">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
         <span>קבע שיחת היכרות חינם</span>
-        <span class="arrow">←</span>
       </a>
+      <div class="final-meta" style="margin-top:18px;color:var(--ink-dim);font-size:13px">שיחת היכרות חינם • 20 דקות</div>
       <div class="final-trust">
         <span>ללא עלות</span>
         <span>ללא מחויבות</span>
@@ -745,7 +732,7 @@
 <footer>
   <div class="logo">
     <div class="logo-mark">דא</div>
-    <div class="logo-text">דור אוסטריך · ליווי רגשי-אנרגטי</div>
+    <div class="logo-text">דור אוסטריך · ליווי רגשי ואנרגטי</div>
   </div>
   <div class="socials">
     <span>מתרגם רגשות למילים</span>
