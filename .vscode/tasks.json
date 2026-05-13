@@ -1,0 +1,16 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Open index.html in default browser",
+      "type": "process",
+      "command": "cmd",
+      "args": ["/c", "start", "", "${workspaceFolder}\\index.html"],
+      "problemMatcher": [],
+      "presentation": {
+        "reveal": "silent",
+        "close": true
+      }
+    }
+  ]
+}

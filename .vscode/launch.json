@@ -1,0 +1,21 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "type": "msedge",
+      "request": "launch",
+      "name": "Open index.html in Edge",
+      "file": "${workspaceFolder}/index.html",
+      "userDataDir": "${env:TEMP}/cursor-edge-debug",
+      "runtimeArgs": ["--no-first-run", "--no-default-browser-check"]
+    },
+    {
+      "type": "chrome",
+      "request": "launch",
+      "name": "Open index.html in Chrome",
+      "file": "${workspaceFolder}/index.html",
+      "userDataDir": "${env:TEMP}/cursor-chrome-debug",
+      "runtimeArgs": ["--no-first-run", "--no-default-browser-check"]
+    }
+  ]
+}
